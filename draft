@@ -1,0 +1,9 @@
+CREATE OR REPLACE FUNCTION get_tenants_by_codes(codes json)
+RETURNS TABLE (tenant_code text) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT tenant_code
+    FROM cfs.consolidated_tenant
+    WHERE tenant_code = ANY (SELECT * FROM json_array_elements_text(codes));
+END;
+$$ LANGUAGE plpgsql;
