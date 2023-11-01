@@ -1,0 +1,17 @@
+const customOrder = [3, 4, 2, 1, 0];
+const array1 = [/* Your array of objects here */];
+
+// Use the `sort` function with a custom comparator
+const array2 = array1.sort((a, b) => {
+  const enumValueA = a.enumValue;
+  const enumValueB = b.enumValue;
+
+  // Use the custom order for comparison
+  const indexA = customOrder.indexOf(enumValueA);
+  const indexB = customOrder.indexOf(enumValueB);
+
+  // Compare using the custom order indices
+  return indexA - indexB;
+});
+
+console.log(array2);
