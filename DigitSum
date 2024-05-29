@@ -1,0 +1,16 @@
+public string DigitSum(string s, int k) {
+        if (s.Length <= k) return s;
+        var res = new List<string>();
+        var newStr = "";
+        while (s.Length > k) {
+            var item = s.Substring(0, k);
+            res.Add(item);
+            s = s.Substring(k);
+        }
+        res.Add(s);
+        foreach (var item in res) {
+            var nums = item.Sum(i => Convert.ToInt32(i));
+            newStr += nums.ToString();
+        }
+        return DigitSum(newStr, k);
+    }
